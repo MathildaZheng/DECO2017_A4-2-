@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tasks</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/task.css" />
+    <style>
+
+        .pr-input{
+            -webkit-user-select:text;
+            -ms-user-select:text;
+            user-select:text;
+            -webkit-appearance:none;
+            font-size:1em;
+            line-height:1.5em;
+            list-style:none;
+        }
+        .pr-input{
+            outline:none;
+            border:none;
+            background:none;
+        }
+        input[type='radio'].radio {
+            opacity:0;
+            position: absolute;
+        }
+
+        label.radio {
+            cursor: pointer;
+            font-size:14px;
+            min-width:80px;
+            display:block;
+            -webkit-appearance: none;
+            background-color:#FAFAFA;
+            border:1px solid #CCCCCC;
+            color: #333333;
+            height:28px;
+            line-height: 28px;
+            margin: 5px;
+            text-align: center;
+            padding: 0 5px;
+        }
+
+        input[type='radio'].radio:checked + .radio {background-color:#2095F2;border:1px solid #2095F2;color: #fff;}
+    </style>
+</head>
+<body>
+
+<div class="main">
+    <div class="left">
+        <div class="tx">
+            <div class="img">
+                <img src="./img/js3.jpg" width="100%" height="100%">
+            </div>
+            <div class="tx-a">
+                <a class="log">log in /</a>
+                <a class="log">sign in </a>
+            </div>
+        </div>
+        <div class="le-main">
+            <ul>
+                <li>
+                    <div class="svg">
+                        <svg id="ic_calendar" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 36 36">
+                            <path id="路径_383" data-name="路径 383" d="M0,0H36V36H0Z" fill="none"/>
+                            <rect id="矩形_604" data-name="矩形 604" width="24" height="24" rx="2" transform="translate(6 7)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_18" data-name="直线 18" y2="5" transform="translate(24 5)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_19" data-name="直线 19" y2="5" transform="translate(12 5)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_20" data-name="直线 20" x2="24" transform="translate(6 16)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_21" data-name="直线 21" x2="6" transform="translate(15 24)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="svg-a active">
+                        <a href="">Calender</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="svg">
+                        <svg id="ic_invoice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 43 43">
+                            <path id="路径_378" data-name="路径 378" d="M0,0H43V43H0Z" fill="none"/>
+                            <path id="路径_379" data-name="路径 379" d="M14,3v7.167a1.792,1.792,0,0,0,1.792,1.792h7.167" transform="translate(11.083 2.375)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <path id="路径_380" data-name="路径 380" d="M26.5,35.25H8.583A3.583,3.583,0,0,1,5,31.667V6.583A3.583,3.583,0,0,1,8.583,3H21.125l8.958,8.958V31.667A3.583,3.583,0,0,1,26.5,35.25Z" transform="translate(3.958 2.375)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_12" data-name="直线 12" x2="2" transform="translate(16 13)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_13" data-name="直线 13" x2="11" transform="translate(16 24)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="直线_14" data-name="直线 14" x2="3" transform="translate(24 30)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="svg-a">
+                        <a href="">Tasks</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 35 35">
+                            <g id="ic_dashboard" transform="translate(-635 3)">
+                                <g id="home" transform="translate(635 -3)">
+                                    <path id="路径_372" data-name="路径 372" d="M0,0H35V35H0Z" fill="none"/>
+                                </g>
+                                <path id="Shape" d="M18.851,29H1.45A1.451,1.451,0,0,1,0,27.55V9.425a2.9,2.9,0,0,1,2.9-2.9H8.7V2.9A2.9,2.9,0,0,1,11.6,0h5.8a2.9,2.9,0,0,1,2.9,2.9V13.05h5.8a2.9,2.9,0,0,1,2.9,2.9v11.6A1.451,1.451,0,0,1,27.55,29ZM26.1,26.1V15.95H20.3V26.1Zm-14.5,0h5.8V15.95q0-.043,0-.086V2.9H11.6Zm-8.7,0H8.7V9.425H2.9Z" transform="translate(638)" fill="#fafafa" stroke="#fafafa" stroke-width="1"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="svg-a ">
+                        <a href="">Data</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="svg">
+                        <svg id="icons_dark_time" data-name="icons/dark/time" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 31 31">
+                            <rect id="矩形_498" data-name="矩形 498" width="31" height="31" fill="#fafafa" opacity="0"/>
+                            <g id="ico" transform="translate(3 4)">
+                                <circle id="椭圆_13" data-name="椭圆 13" cx="12" cy="12" r="12" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                <path id="路径_49" data-name="路径 49" d="M12,6v5.179L15.452,12.9" transform="translate(0.842 -0.302)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="svg-a ">
+                        <a href="">Data</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="ri-top">
+            <img src="img/logo.png" width="10vw">
+            <svg id="ic_inbox" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 37.5 37.5">
+                <path id="路径_376" data-name="路径 376" d="M0,0H37.5V37.5H0Z" fill="none"/>
+                <rect id="矩形_603" data-name="矩形 603" width="28" height="22" rx="2" transform="translate(5 8)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                <path id="路径_377" data-name="路径 377" d="M3,7l14.063,9.375L31.125,7" transform="translate(1.688 3.938)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </svg>
+            <svg id="ic-bell" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 34.232 34.232">
+                <path id="路径_401" data-name="路径 401" d="M0,0H34.232V34.232H0Z" fill="none"/>
+                <path id="路径_402" data-name="路径 402" d="M12.558,5.853a2.853,2.853,0,1,1,5.705,0,9.984,9.984,0,0,1,5.705,8.558V18.69a5.705,5.705,0,0,0,2.853,4.279H4A5.705,5.705,0,0,0,6.853,18.69V14.411a9.984,9.984,0,0,1,5.705-8.558" transform="translate(1.705 1.279)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                <path id="路径_403" data-name="路径 403" d="M9,17v1.426a4.279,4.279,0,0,0,8.558,0V17" transform="translate(3.837 7.247)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </svg>
+            <svg id="ic_help" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 29.931 29.931">
+                <path id="路径_384" data-name="路径 384" d="M0,0H29.931V29.931H0Z" fill="none"/>
+                <circle id="椭圆_1" data-name="椭圆 1" cx="11.009" cy="11.009" r="11.009" transform="translate(4.128 4.128)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                <line id="直线_22" data-name="直线 22" transform="translate(15.138 21.33)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                <path id="路径_385" data-name="路径 385" d="M12.494,15.113a1.871,1.871,0,0,1,1.247-1.871A3.243,3.243,0,1,0,10,8.254" transform="translate(2.471 1.723)" fill="none" stroke="#7e84a3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" viewBox="0 0 25.1 25.1">
+                <path id="color" d="M23.624,25.1a1.48,1.48,0,0,1-.9-.31l-.14-.124-4.79-4.788a10.973,10.973,0,0,1-6.716,2.268A11.074,11.074,0,1,1,22.148,11.073a10.972,10.972,0,0,1-2.268,6.716l4.788,4.79A1.477,1.477,0,0,1,23.624,25.1ZM11.073,2.953a8.121,8.121,0,1,0,5.236,14.329,1.474,1.474,0,0,1,.973-.974A8.12,8.12,0,0,0,11.073,2.953Z" fill="#7e84a3"/>
+            </svg>
+
+        </div>
+        <div class="study">
+            <div class="form">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block" style="margin-left: 0;">
+                            <input type="text" name="task" placeholder="Task name" autocomplete="off" class="layui-input task btn-border">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Type</label>
+                        <div class="layui-input-block btn-border">
+                            <select name="type" lay-filter="type">
+                                <option value="0">Courses</option>
+                                <option value="1">Assessment</option>
+                                <option value="2">Meeting</option>
+                                <option value="3">Holiday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Priority Rating</label>
+                        <div class="layui-input-block">
+                            <input class="pr-input" type="radio" name="prior" value="0" title="High" checked>
+                            <input class="pr-input" type="radio" name="prior" value="1" title="Med">
+                            <input class="pr-input" type="radio" name="prior" value="2" title="Low" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item flex-row">
+                        <label class="layui-form-label">Due Date</label>
+                        <input type="text" name="date" placeholder="Date" class="layui-input btn-border" id="date">
+                        <input type="text" name="time" placeholder="Time" class="layui-input btn-border" id="time">
+                    </div>
+
+                    <div class="layui-form-item layui-form-text ">
+                        <div class="layui-input-block content-text">
+                            <p>Content</p>
+                            <textarea name="content" placeholder="" class="layui-textarea btn-border"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <div class="layui-input-block content-text">
+                            <p>Reference material links</p>
+                            <textarea name="link"  placeholder="" class="layui-textarea btn-border"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item float-right">
+                        <div class="layui-input-block">
+                            <button class="layui-btn bg-1" lay-submit lay-filter="demo1">Finish</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script>
+    let storage = window.localStorage;
+    var str='';
+
+    layui.use('form', function(){
+        var form = layui.form,
+            laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#date' //指定元素
+            ,theme: '#8A56AC'
+        });
+        laydate.render({
+            elem: '#time'
+            ,type: 'time'
+            ,theme: '#8A56AC'
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            var localTest = localStorage.getItem('test');
+            var jsonArray = JSON.parse(localTest);
+
+            var settings=data.field;
+            settings.isfinish=0;
+            jsonArray.push(settings)
+
+            str=JSON.stringify(jsonArray)
+            console.log(str);
+            storage.setItem('test', str)
+
+            window.location.href="calender.html"
+            return false;
+        });
+    });
+
+</script>
+</body>
+</html>

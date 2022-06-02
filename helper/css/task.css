@@ -1,0 +1,41 @@
+.layui-form-select .layui-edge{
+    left:10px;
+    right: 0;
+}
+.layui-input{
+    padding-left: 30px;
+}
+.form{
+    width: 30%;
+    height: auto;
+    margin-left: 2%;
+    margin-top: 50px;
+}
+.task{
+    width: 100%;
+}
+
+.content-text{
+    width: 100%;
+    position: relative;
+    margin-left: 0!important;
+}
+.content-text p{
+    position: absolute;
+    top:0;
+    left: 10px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+    color: #5F4591;
+    z-index: 99;
+}
+.content-text textarea{
+    padding-top: 30px;
+}
+.layui-textarea{
+    min-height: 150px;
+}
+.layui-form-radio:hover *, .layui-form-radioed, .layui-form-radioed>i {
+    color: #8A56AC;
+}
