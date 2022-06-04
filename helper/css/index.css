@@ -175,3 +175,53 @@ ul li{
     text-align: center;
     font-size: 3vw;
 }
+
+.block{
+    display: block;
+}
+.none{
+    display: none;
+}
+
+.list{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-top: 50px;
+    padding: 30px;
+    box-shadow:4px 4px 8px -6px #808080,inset -2px -2px 8px -3px #808080;
+}
+#taskTable{
+    margin: 20px 0;
+    width: 100%;
+    position: relative;
+    font-size: 0.9vw;
+}
+#taskTable tr{
+    margin-top: 15px;
+    position: relative;
+
+}
+.layui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #865AE6;
+    border-radius: 100%;
+}
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #865AE6!important;
+    background-color: #865AE6;
+}
+.layui-form-checkbox[lay-skin=primary] i {
+    border-radius: 100%;
+}
+.task-name{
+    line-height: 25px;
+    border-bottom: 0.5px solid #808080;
+}
+.task-time{
+    padding: 5px;
+    border-radius: 0.8vw;
+    position: absolute;
+    float: right;
+    right: 0;
+    top: 0;
+}

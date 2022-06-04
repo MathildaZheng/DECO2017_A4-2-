@@ -39,3 +39,34 @@
 .layui-form-radio:hover *, .layui-form-radioed, .layui-form-radioed>i {
     color: #8A56AC;
 }
+.type_divide_item{
+    margin-bottom:0;
+}
+.type_divide{
+    margin-left: 0;
+    min-height: 10px;
+}
+.type_divide input{
+    padding: 0;
+    width: 100px;
+    height: 25px;
+    margin-left: 0;
+    padding-left: 30px;
+    padding-right: 0!important;
+    line-height: 25px;
+    border-radius: 13px;
+}
+.task-type{
+    position: absolute;
+    float: right;
+    right: 200px;
+    top: 0;
+
+}
+.divide_task_date{
+    padding-left: 10px!important;
+    position: absolute;
+    float: right;
+    right: 90px;
+    top: 0;
+}
