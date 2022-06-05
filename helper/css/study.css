@@ -15,7 +15,9 @@
 }
 #count p{
     width:4vw;
+    min-width: 50px;
     height: 7vw;
+    min-height: 70px;
     font-size: 4vw;
     margin-left: 2vw;
     line-height: 7vw;
@@ -28,25 +30,12 @@
     padding-left: 5%;
     border-left: 0.8px solid #becace;
 }
-.title-2{
-    font-size: 2vw;
-    color: #808080;
-    z-index: -999;
-}
-.list{
-    width: 90%;
-    height: 200px;
-    border-radius: 20px;
-    box-shadow:4px 4px 8px -5px #808080,inset -2px -2px 8px -5px #808080;
-}
-
-/*进度条*/
+/*progress bar*/
 .progress-h p{
     margin-top: 20px;
     color: #808080;
 }
-
-/*时钟表针*/
+/*clock*/
 .hand {
     stroke: #865AE6;
     stroke-width: 10;
@@ -71,7 +60,7 @@
 .relative{
     position: relative;
 }
-
+/*music player*/
 .music{
     width: 50px;
     line-height: 50px;
@@ -144,4 +133,40 @@
 }
 .play_list li:hover{
     background-color: #808080;
+}
+.study-main,.main-svg{
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width:988px) {
+    .study-main{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+    .study-right{
+        width: 90%;
+        padding: 0;
+        margin: 20px auto;
+        border: none;
+    }
+    .main-svg{
+        height:400px;
+        flex-direction: column;
+    }
+    .time-svg{
+        position: relative;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    .music{
+        margin: 0 auto;
+        text-align: center;
+        border: none;
+    }
+    .play_music{
+        margin: 0 auto;
+    }
+
 }

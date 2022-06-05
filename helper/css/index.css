@@ -117,7 +117,7 @@ ul li{
     width: 89vw;
     height: auto;
     margin-left: 1vw;
-    position: relative;
+    /*position: relative;*/
     float: left;
     /*background-color: white;*/
 }
@@ -149,7 +149,14 @@ ul li{
 .progress-h{
     height: 15px;
     line-height: 15px;
-    /*margin: 10px 0;*/
+}
+.finish_pro{
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: #808080;
+    position: relative;
 }
 .btn-border{
     border-radius: 5px;
@@ -166,9 +173,10 @@ ul li{
     background-color: #D47FA6;
 }
 
-.study{
+.main_content{
     width: 100%;
     height: auto;
+    position: relative;
 }
 .title{
     width: 100%;
@@ -182,14 +190,18 @@ ul li{
 .none{
     display: none;
 }
-
+/*list*/
+.div_task{
+    width: 60%;
+}
 .list{
     width: 100%;
     height: auto;
     border-radius: 20px;
     margin-top: 50px;
-    padding: 30px;
+    padding: 30px 30px 60px 30px;
     box-shadow:4px 4px 8px -6px #808080,inset -2px -2px 8px -3px #808080;
+    position: relative;
 }
 #taskTable{
     margin: 20px 0;
@@ -197,21 +209,9 @@ ul li{
     position: relative;
     font-size: 0.9vw;
 }
-#taskTable tr{
+#taskTable li{
     margin-top: 15px;
     position: relative;
-
-}
-.layui-form-checkbox[lay-skin=primary]:hover i {
-    border-color: #865AE6;
-    border-radius: 100%;
-}
-.layui-form-checked[lay-skin=primary] i {
-    border-color: #865AE6!important;
-    background-color: #865AE6;
-}
-.layui-form-checkbox[lay-skin=primary] i {
-    border-radius: 100%;
 }
 .task-name{
     line-height: 25px;
@@ -224,4 +224,110 @@ ul li{
     float: right;
     right: 0;
     top: 0;
+}
+.title-2{
+    font-size: 2vw;
+    color: #808080;
+    z-index: -999;
+}
+.title-3{
+    font-size: 1vw;
+    color: #808080;
+    z-index: -999;
+}
+.title-4{
+    font-size: 2vw;
+    color: #808080;
+    z-index: -999;
+}
+.margin-left-20{
+    margin: 0 20px;
+}
+.layui-form-radio:hover *, .layui-form-radioed, .layui-form-radioed>i {
+    color: #5F4591;
+}
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #5F4591!important;
+    background-color: #5F4591;
+    color: #fff;
+}
+.layui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #5F4591;
+    color: #fff;
+}
+/*Responsive layout*/
+@media (max-width:988px) {
+    .main {
+        height: 50px;
+        flex-direction: column;
+    }
+    .left,.right{
+        width: 100%;
+    }
+    .right{
+        margin-left: 0;
+    }
+    .tx{
+        width: 200px;
+        float: right;
+        position: relative;
+        right: 20px;
+        top: 10px;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    .tx-a{
+        width: auto;
+        font-size: 0.5vw;
+    }
+    .img{
+        width: 40px;
+        height: 40px;
+    }
+    .le-main ul{
+        width: 100%;
+        float: left;
+        margin-top: 0;
+    }
+    .le-main li{
+        width: 25%;
+        float: left;
+        text-align: center;
+    }
+    .le-main li .svg{
+        display: none;
+    }
+    .ri-top{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .svg-a{
+        width: 100%;
+        text-align: center;
+    }
+    .title{
+        margin-top: 20px;
+    }
+    .width-50{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .title-2{
+        font-size: 30px;
+        margin-left: 30%;
+    }
+    .div_task{
+        width: 100%;
+    }
+}
+.bg-white{
+    background-color: white;
+    position: absolute;
+    top:10px;
+    right:20px;
+    color: black!important;
 }

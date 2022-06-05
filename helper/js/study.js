@@ -27,26 +27,3 @@ layui.use('form', function(){
     var form = layui.form
 
 });
-
-
-// function study_GetDateStr() {
-//     var dd = new Date();
-//     var y = dd.getFullYear();
-//     var m = dd.getMonth()+1;//获取当前月份的日期
-//     var d = dd.getDate();
-//     return y+"-"+m+"-"+d;
-// }
-// function dislodgeZero(str) {
-//     let strArray = str.split("-");
-//     strArray = strArray.map(function(val) {
-//         if (val[0] == "0") {
-//             return (val = val.slice(1));
-//         } else {
-//             return val;
-//         }
-//     });
-//     return strArray.join("-");
-// }
-
-// --------time
-

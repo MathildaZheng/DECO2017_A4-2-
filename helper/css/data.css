@@ -1,0 +1,117 @@
+.data-main{
+    width: 90%;
+    margin: 20px auto;
+}
+.sc-mark-type{
+    padding: 15px 15px;
+    margin-left: 25px;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+    box-shadow: 5px 4px 8px -6px #808080,inset -2px -2px 8px -6px #808080;
+    color: #707070;
+}
+
+.data-list{
+    width: 100%;
+    height: 600px;
+    /*background-color: wheat;*/
+    position: relative;
+}
+.data-hr{
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 300px;
+}
+.ul,.li{
+    width: 25%;
+    float: left;
+}
+.ul{
+    position: relative;
+    width: 100%;
+}
+.data-pro,.name,.border-col,.content,.data-con{
+    margin: 0 auto;
+}
+.data-pro{
+    width: 50%;
+    margin-top: 120px;
+}
+.data-pro2{
+    margin-top: 30px;
+}
+.border-col{
+    width: 1px;
+    height: 45px;
+    border-left: 0.5px solid #808080;
+}
+.name{
+    width: 60%;
+    height: 100px;
+    margin-top: 30px;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow:0 3px 6px #D47FA666,inset 0 4px 6px #D47FA666;
+}
+.name2{
+    margin-top: 0;
+}
+.date{
+    line-height: 40px;
+    color: #5F4591;
+    text-align: center;
+}
+.content{
+    width: 90%;
+    height: 260px;
+    background-color: white;
+    padding: 10px;
+    box-shadow:3px 3px 6px #80808066,inset 3px 3px 6px #80808066;
+    position: relative;
+    font-size: 0.9vw;
+}
+.content p{
+    color: #999999!important;
+}
+.btn{
+    border: 0;
+    border-radius: 3vw;
+    box-shadow: 2px 2px 6px #80808066,inset -2px -2px 6px #80808066;
+    text-align: center;
+    background-color: white;
+    font-size: 1vw;
+    color: #808080;
+    padding: 0 5px;
+}
+.btn1{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+.btn3,.btn2{
+    float: right;
+    margin-right: 10px;
+}
+
+.data-con{
+    padding: 5px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 6px #80808066,inset -2px -2px 6px #80808066;
+    height: 60px;
+    margin-bottom: 5px;
+}
+.data-link{
+    margin-top: 25px;
+    height: auto;
+}
+.data-link li{
+    width: 95%;
+    margin: 4px auto;
+    line-height: 25px;
+    box-shadow: 2px 2px 6px #80808066,inset -2px -2px 6px #80808066;
+}
+

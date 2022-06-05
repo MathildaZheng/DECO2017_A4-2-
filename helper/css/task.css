@@ -6,9 +6,9 @@
     padding-left: 30px;
 }
 .form{
-    width: 30%;
+    width: 32%;
     height: auto;
-    margin-left: 2%;
+    padding-left: 2%;
     margin-top: 50px;
 }
 .task{
@@ -31,14 +31,13 @@
     z-index: 99;
 }
 .content-text textarea{
+    border-radius: 20px;
     padding-top: 30px;
 }
 .layui-textarea{
     min-height: 150px;
 }
-.layui-form-radio:hover *, .layui-form-radioed, .layui-form-radioed>i {
-    color: #8A56AC;
-}
+/*list*/
 .type_divide_item{
     margin-bottom:0;
 }
@@ -61,12 +60,92 @@
     float: right;
     right: 200px;
     top: 0;
-
 }
 .divide_task_date{
     padding-left: 10px!important;
     position: absolute;
     float: right;
-    right: 90px;
+    right: 100px;
     top: 0;
+    width: 120px;
+    height: 25px;
+}
+.divide_task_time{
+    padding-left: 0!important;
+    position: absolute;
+    float: right;
+    right: 10px;
+    top: 0;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+}
+.type_divide svg{
+    position: relative;
+    right: 105px;
+    top:-3px;
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: #8A56AC;
+    color: #fff;
+}
+.add_divide_task{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.task-name {
+    width: 50%;
+    line-height: 50px;
+    font-size: 1vw;
+}
+.input_add{
+    width: 100%;
+    border: none;
+}
+.margin-20{
+    margin-top: 20px;
+}
+.divide_task_pro{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
+.checkbox{
+    width: 18px;
+    height: 18px;
+}
+.task_main{
+    display: flex;
+    flex-direction: row;
+}
+.add_form{
+    position: relative;
+    margin-bottom: 60px;
+}
+.div_task{
+    margin-left: 2%;
+    padding-left: 20px;
+    border-left: 1px solid #808080;
+}
+@media (max-width:988px) {
+    .div_task{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .task_main{
+        display: flex;
+        flex-direction: column;
+    }
+    .form{
+        width: 90%;
+        padding: 0;
+        border: none;
+        margin: 50px auto;
+    }
 }

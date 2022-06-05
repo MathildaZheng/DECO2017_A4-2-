@@ -1,4 +1,3 @@
-//播放列表
 var music_list =[
     {
         "id":"1",
@@ -34,11 +33,11 @@ var stop_svg=document.querySelector("#stop_svg");
 var play_list = document.querySelector("#play_list");
 var play_list_area = document.querySelector("#play_list_area");
 
-//播放列表
+//plat list
 function loadPlayList(){
     for(var i=0;i<music_list.length;i++){
         var music = music_list[i];
-        //创建标签
+        //creat element
         var liTag = document.createElement("li");
         var spanTitleTag = document.createElement("span");
 
@@ -48,9 +47,9 @@ function loadPlayList(){
 
         liTag.setAttribute("data-index",i);
         liTag.addEventListener("click",function(){
-            //获取每个li标签的歌曲id
+            //Gets the song id of each li tage
             var index = this.getAttribute("data-index");
-            //将歌曲id赋给，全局变量play_index
+            //Assign the song id to the global variable play_index
             play_index = index;
 
             loadMusic();
@@ -59,14 +58,14 @@ function loadPlayList(){
     }
 }
 
-//载入歌曲
+//load music
 function loadMusic(){
     var music = music_list[play_index];
     console.log(play_index)
     player.src = music.src;
 }
 
-//播放,暂停
+//play, stop
 btnPlay.addEventListener("click",function(){
     if(player.paused){
         playMusic();
@@ -78,13 +77,13 @@ btnPlay.addEventListener("click",function(){
     }
 })
 
-//上一曲
+//last music
 function backword(){
     if(play_index==0){
         play_index=music_list.length-1;
     }
     else{
-        //改变播放序号
+        //change the play number
         play_index--;
     }
 
@@ -92,27 +91,27 @@ function backword(){
     playMusic();   
 }
 
-//下一曲
+//next music
 function forward(){
     if(play_index==music_list.length-1){
         play_index=0;
     }
     else{
-        //改变播放序号
+        //change the music number
         play_index++;
     }
     loadMusic();
     playMusic();   
 }
 
-//播放
+//play
 function playMusic(){
     player.play();
     start_svg.setAttribute("class","block");
     stop_svg.setAttribute("class","none");
 }
 
-//时间转换
+//time conversion
 function formateTime(time){
     if(time>3600){
         var hour = parseInt(time/3600);
@@ -132,7 +131,7 @@ function formateTime(time){
     }
 }
 
-//设置定时器
+//set timer
 window.setInterval(function(){
     time.innerHTML = formateTime(player.currentTime);
     all_time.innerHTML=formateTime(player.duration);
@@ -141,8 +140,7 @@ window.setInterval(function(){
     process_slide.style.width=percent*100+"%";
 },100)
 
-
-//隐藏播放列表 flag=0表示列表在隐藏
+//hide playlist flag=0 meansto be hidden
 function showMusicList(){
     if(flag){
         play_list_area.style.display="none";
@@ -153,9 +151,7 @@ function showMusicList(){
         flag=1;
     }
 }
-
-
-//初始化
+//initialization
 loadPlayList();
 var play_index=0;
 var flag=1;

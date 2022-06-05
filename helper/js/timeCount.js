@@ -2,14 +2,14 @@ function $(id) {
     return document.getElementById(id)
 }
 window.onload = function() {
-    //点击开始建 开始计数
+    //click start,start to count
     var count = 0
-    var timer = null //timer变量记录定时器setInterval的返回值
+    var timer = null //The timer variable records the return value of the timer setInterval
     $("start").onclick = function() {
         timer = setInterval(function() {
             count++;
             console.log(count)
-            // 需要改变页面上时分秒的值
+            // Need to change the value of hours, minutes and seconds on the page
             console.log($("id_S"))
             $("id_S_2").innerHTML =parseInt(count % 60%10)
             $("id_S_1").innerHTML = parseInt(count % 60/10)
@@ -23,17 +23,17 @@ window.onload = function() {
         }, 1000)
     }
     $("stop").onclick = function() {
-        //取消定时器
+        //cancel timer
         clearInterval(timer)
     }
-    //停止记数  数据清零  页面展示数据清零
+    //Stop counting Data clearing Page display data clearing
     $("reset").onclick = function() {
-        //取消定时器
+        //cancel timer
         $("stop").onclick()
         // clearInterval(timer)
-        //数据清零  总秒数清零
+        //Data reset Total seconds rese
         count = 0
-        //页面展示数据清零
+        //Clear page display data
         $("id_S_2").innerHTML =0
         $("id_S_1").innerHTML = 0
 
@@ -44,7 +44,7 @@ window.onload = function() {
         $("id_H_1").innerHTML = 0
     }
     $("finish").onclick = function() {
-        //取消定时器
+        //cancel timer
         $("reset").onclick()
     }
 }

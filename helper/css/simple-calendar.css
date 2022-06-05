@@ -13,9 +13,7 @@
     float: left;
     margin-right: 20px;
     -moz-user-select: none;
-    /*火狐*/
     -webkit-user-select: none;
-    /*webkit浏览器*/
     -ms-user-select: none;
     /*IE10*/
     user-select: none;
@@ -45,9 +43,8 @@
     color: #999999;
 }
 
-.sc-days {
-    /*height: 88%;*/
-}
+
+
 
 .sc-header .sc-yright {
     margin-right: 4px;
@@ -78,12 +75,7 @@
     border: 1px solid #F1EBE4;
     box-sizing: border-box;
 }
-
-.sc-item .wx-day {
-
-}
-
-/*//@-节气或阴历*/
+/*lunar*/
 .sc-item .wx-day .lunar-day {
     float: left;
 }
@@ -112,7 +104,7 @@
     padding: 0px;
     font-size: 12px;
     font-weight: normal;
-    /*//@-强制不划行，且多余显示省略号。*/
+    /*force no line and ellipsis to be displayed unnecessarily.*/
     white-space: nowrap;
     white-space: nowrap;
     overflow: hidden;
@@ -170,8 +162,6 @@ body .layui-layer-tips .wx-mark .wx-mark-li {
 .sc-vocation {
     background-color: #FFEBEC;
 }
-
-/*//@-有备注的时候的样式*/
 .sc-mark {
     /*background-color: #E5FBFA;*/
     overflow: hidden;
@@ -188,30 +178,13 @@ body .layui-layer-tips .wx-mark .wx-mark-li {
     background-color: #E00808;
     margin-top: -10px;
 }
-
 .sc-othermenth {
     color: #C1C0C0 !important;
 }
-
 .sc-othermenth .wx-day, .sc-othermenth .lunar-day {
     color: #C7C7C7 !important;
     font-weight: normal;
 }
-
-/*//@-鼠标移入的样式哦*/
-.sc-active-day, .sc-selected {
-    /*background-color: orange;*/
-    /*color: white;*/
-    /*border: 1px solid orange;*/
-}
-
-/*//@-今天的样式*/
-.sc-today {
-    /*background-color: orange;*/
-    /*color: white !important;*/
-    /*border: 1px solid orange;*/
-}
-
 .sc-item .wx-day {
     font-size: 14px;
     text-align: left;
@@ -228,11 +201,6 @@ body .layui-layer-tips .wx-mark .wx-mark-li {
 .sc-festival .lunar-day {
     color: #E00808;
 }
-
-/*.sc-item:last-child, .sc-item:nth-child(7n) {
-  border-width: 0 1px 1px 1px;
-}*/
-
 .sc-week-item {
     height: 100%;
     padding: 0px;
@@ -337,8 +305,9 @@ body .sc-actions-big.sc-mark-sp {
 }
 .sc-header p{
     line-height: 50px;
+    min-width: 80px;
     color: #707070;
-    font-size: 14px;
+    font-size: 1vw;
     margin-left: 20px;
 }
 .sc-mark-type{
