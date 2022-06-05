@@ -13,9 +13,11 @@
     float: left;
     margin-right: 20px;
     -moz-user-select: none;
+   
     -webkit-user-select: none;
+  
     -ms-user-select: none;
-    /*IE10*/
+
     user-select: none;
     -webkit-text-size-adjust: none;
     font-size: 16px;
@@ -43,8 +45,9 @@
     color: #999999;
 }
 
-
-
+.sc-days {
+    /*height: 88%;*/
+}
 
 .sc-header .sc-yright {
     margin-right: 4px;
@@ -75,7 +78,12 @@
     border: 1px solid #F1EBE4;
     box-sizing: border-box;
 }
-/*lunar*/
+
+.sc-item .wx-day {
+
+}
+
+
 .sc-item .wx-day .lunar-day {
     float: left;
 }
@@ -104,7 +112,7 @@
     padding: 0px;
     font-size: 12px;
     font-weight: normal;
-    /*force no line and ellipsis to be displayed unnecessarily.*/
+ 
     white-space: nowrap;
     white-space: nowrap;
     overflow: hidden;
@@ -178,13 +186,16 @@ body .layui-layer-tips .wx-mark .wx-mark-li {
     background-color: #E00808;
     margin-top: -10px;
 }
+
 .sc-othermenth {
     color: #C1C0C0 !important;
 }
+
 .sc-othermenth .wx-day, .sc-othermenth .lunar-day {
     color: #C7C7C7 !important;
     font-weight: normal;
 }
+
 .sc-item .wx-day {
     font-size: 14px;
     text-align: left;
@@ -201,6 +212,7 @@ body .layui-layer-tips .wx-mark .wx-mark-li {
 .sc-festival .lunar-day {
     color: #E00808;
 }
+
 .sc-week-item {
     height: 100%;
     padding: 0px;

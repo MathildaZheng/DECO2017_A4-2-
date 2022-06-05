@@ -11,11 +11,11 @@ function main() {
     var myCalendar = new SimpleCalendar('#calendar', {
         width: '100%',
         height: '500px',
-        language: 'EN', //language
-        showLunarCalendar: false, //luner calender
-        showHoliday: false, //holiday
-        showFestival: false, //festival
-        showLunarFestival: false,
+        language: 'EN', 
+        showLunarCalendar: false, 
+        showHoliday: false, 
+        showFestival: false, 
+        showLunarFestival: false, 
         showSolarTerm: false, 
         showMark: true, 
         realTime: false, 
@@ -24,14 +24,15 @@ function main() {
             endYear: 2049
         },
         mark: {},
-        markColor: ['#82C43C', '#1E75FF', '#FF9AD5', '#DDDF00', '#FF974A'],//记事各个颜色
+        markColor: ['#82C43C', '#1E75FF', '#FF9AD5', '#DDDF00', '#FF974A'],
         main: function (year, month) {
+           
             var index = -1;
             if (layer) index = layer.msg('正在查询数据......', {icon: 16, shade: 0.6});
 
             var localTest = localStorage.getItem('test');
             var jsonArray = JSON.parse(localTest);
-            var resultObj = {}
+            var resultObj = {};
             for(var i in jsonArray){
                 var array = [];
                 var date = jsonArray[i].date;
@@ -48,11 +49,11 @@ function main() {
                 resultObj[date] = array;
             }
 
-            console.log(resultObj);
+
             if (layer) layer.close(index);
+            console.log(resultObj);
             return resultObj;
         },
-
         theme: {
             changeAble: false,
             weeks: {
@@ -70,3 +71,5 @@ function main() {
         }
     });
 }
+
+

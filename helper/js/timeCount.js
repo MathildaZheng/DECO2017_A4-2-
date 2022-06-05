@@ -2,7 +2,7 @@ function $(id) {
     return document.getElementById(id)
 }
 window.onload = function() {
-    //click start,start to count
+    //click start, start count
     var count = 0
     var timer = null //The timer variable records the return value of the timer setInterval
     $("start").onclick = function() {
@@ -31,7 +31,7 @@ window.onload = function() {
         //cancel timer
         $("stop").onclick()
         // clearInterval(timer)
-        //Data reset Total seconds rese
+        //Data reset Total seconds reset
         count = 0
         //Clear page display data
         $("id_S_2").innerHTML =0

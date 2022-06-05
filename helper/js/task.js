@@ -198,4 +198,7 @@ function add_div_task(){
         return false
     }
     document.getElementById("add_form").style.display='block';
+
+    // storage.setItem('test', '')
+    // storage.setItem('local_div_Test', '')
 }

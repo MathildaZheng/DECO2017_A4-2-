@@ -158,9 +158,10 @@ ul li{
     color: #808080;
     position: relative;
 }
+
 .btn-border{
     border-radius: 5px;
-    box-shadow:3px 3px 6px -5px #808080,inset -3px -3px 6px -5px #808080;
+    box-shadow:3px 3px 6px -4px #808080,inset -3px -3px 6px -5px #808080;
 }
 
 .bg-1{
@@ -184,12 +185,14 @@ ul li{
     font-size: 3vw;
 }
 
+
 .block{
     display: block;
 }
 .none{
     display: none;
 }
+
 /*list*/
 .div_task{
     width: 60%;
@@ -212,6 +215,7 @@ ul li{
 #taskTable li{
     margin-top: 15px;
     position: relative;
+
 }
 .task-name{
     line-height: 25px;
@@ -225,6 +229,7 @@ ul li{
     right: 0;
     top: 0;
 }
+
 .title-2{
     font-size: 2vw;
     color: #808080;
@@ -255,6 +260,7 @@ ul li{
     border-color: #5F4591;
     color: #fff;
 }
+
 /*Responsive layout*/
 @media (max-width:988px) {
     .main {

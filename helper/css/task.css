@@ -37,6 +37,7 @@
 .layui-textarea{
     min-height: 150px;
 }
+
 /*list*/
 .type_divide_item{
     margin-bottom:0;
@@ -47,7 +48,6 @@
 }
 .type_divide input{
     padding: 0;
-    width: 100px;
     height: 25px;
     margin-left: 0;
     padding-left: 30px;

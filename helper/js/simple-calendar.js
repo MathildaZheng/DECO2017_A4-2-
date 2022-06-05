@@ -43,11 +43,11 @@ var LunarHelp = function () {
 
         var i,
             leap = 0,
-            temp = 0; //days
+            temp = 0; 
         var baseDate = new Date(1900, 0, 31);
         var offset = (date - baseDate) / 86400000;
 
-        //count years
+        
         for (i = 1900; i < 2050 && offset - this.lYearDays(i) > 0; i++) {
             offset -= this.lYearDays(i);
         }
@@ -56,9 +56,9 @@ var LunarHelp = function () {
         leap = this.leapMonth(i);
         this.isLeap = false;
 
-        //count month
+        
         for (i = 1; i < 13 && offset > 0; i++) {
-            
+        
             if (leap > 0 && i == leap + 1 && this.isLeap == false) {
                 --i;
                 temp = this.leapDays(this.year);
@@ -66,11 +66,13 @@ var LunarHelp = function () {
                 temp = this.monthDays(this.year, i);
             }
 
-            
+       
             if (this.isLeap == true && i == leap + 1) this.isLeap = false;
 
             offset -= temp;
         }
+
+ 
         if (offset == 0 && leap > 0 && i == leap + 1) if (this.isLeap) {
             this.isLeap = false;
         } else {
@@ -84,8 +86,13 @@ var LunarHelp = function () {
         }
 
         this.month = i;
+    
         this.day = offset + 1;
     }
+
+
+
+
     _createClass(LunarHelp, [{
         key: 'lYearDays',
         value: function lYearDays(year) {
@@ -97,11 +104,15 @@ var LunarHelp = function () {
             return sum + this.leapDays(year); 
         }
 
+
+
     }, {
         key: 'leapDays',
         value: function leapDays(year) {
             if (this.leapMonth(year)) return this.lunarInfo[year - 1900] & 0x10000 ? 30 : 29; else return 0;
         }
+
+
 
     }, {
         key: 'leapMonth',
@@ -109,11 +120,16 @@ var LunarHelp = function () {
             return this.lunarInfo[year - 1900] & 0xf;
         }
 
+
+
     }, {
         key: 'monthDays',
         value: function monthDays(year, month) {
             return this.lunarInfo[year - 1900] & 0x10000 >> month ? 30 : 29;
         }
+
+
+
     }, {
         key: 'cDay',
         value: function cDay(d) {
@@ -137,6 +153,8 @@ var LunarHelp = function () {
             }
             return s;
         }
+
+
     }, {
         key: 'cMonth',
         value: function cMonth(m) {
@@ -185,6 +203,7 @@ var LunarHelp = function () {
             return s;
         }
 
+
     }, {
         key: 'getLunarDay',
         value: function getLunarDay() {
@@ -198,6 +217,7 @@ var LunarHelp = function () {
             if (this.day == 1) return this.cMonth(this.month);
             return this.cDay(this.day);
         }
+
 
     }, {
         key: 'getLunarDayNum',
@@ -227,13 +247,24 @@ window._clickSP = function (obj,num) {
         $(".sc-days").find(".selected_" + type).removeClass("none").show();
     }
 }
-window._MonthWeekToDay = 42;
+window._click_prior = function (obj,num) {
+    var $obj = $(obj), prior = num;
 
+    for(var i=0;i<=2;i++){
+        $(".sc-days").find(".prior_" + i).addClass("none").show();
+
+    }
+    $(".sc-days").find(".prior_" + prior).removeClass("none").show();
+
+}
+
+
+window._MonthWeekToDay = 42;
 var SimpleCalendar = function () {
- 
+
     function SimpleCalendar(query, options) {
         _classCallCheck(this, SimpleCalendar);
-        
+      
         this._defaultOptions = {
             width: '500px',
             height: '500px',
@@ -242,8 +273,8 @@ var SimpleCalendar = function () {
             showHoliday: true, 
             showFestival: true, 
             showLunarFestival: true, 
-            showSolarTerm: true, 
-            showMark: true,
+            showSolarTerm: true,
+            showMark: true, 
             realTime: true, 
             timeRange: {
                 startYear: 1900,
@@ -269,13 +300,20 @@ var SimpleCalendar = function () {
                 invalidDays: '#C1C0C0'
             }
         };
+
+        
         this.container = document.querySelector(query);
+
         this._defaultOptions.width = this.container.style.offsetWidth;
         this._defaultOptions.height = this.container.style.offsetHeight;
+
+        
         myConfig = this._options = this.optionAssign(this._defaultOptions, options);
 
         this.create();
     }
+
+  
     _createClass(SimpleCalendar, [{
         key: 'optionAssign',
         value: function optionAssign(optionsA, optionsB) {
@@ -286,6 +324,7 @@ var SimpleCalendar = function () {
             }
             return optionsA;
         }
+    
     }, {
         key: 'create',
         value: function create() {
@@ -325,10 +364,16 @@ var SimpleCalendar = function () {
                     '<div class="wx-mark-cr"><ul class="wx-mark"></ul></div>' +
                     '</div>';
             }
+        
+            this.updateSelect(this.tyear, this.tmonth);
+         
             this.update();
+       
             if (this._options.realTime)
                 self.setInterval('SimpleCalendar.timeupdate()', 200);
         }
+
+      
     }, {
         key: 'update',
         value: function update() {
@@ -345,16 +390,20 @@ var SimpleCalendar = function () {
             this.updateTheme(this._options.theme);
         }
 
+     
+
     }, {
         key: 'updateSize',
         value: function updateSize() {
             var width = arguments.length <= 0 || arguments[0] === undefined ? this._options.width : arguments[0];
             var height = arguments.length <= 1 || arguments[1] === undefined ? this._options.height : arguments[1];
+
+           
             this._options.width = width;
             this._options.height = height;
 
             this.container.style.width = width;
-            // this.container.style.height = height;
+           
             if (parseInt(width) < 500) {
                 var actions = this.arrayfrom(this.container.querySelectorAll('.sc-actions'));
                 actions.forEach(function (v, i) {
@@ -387,9 +436,12 @@ var SimpleCalendar = function () {
             }
         }
 
+      
+
     }, {
         key: 'updateSelect',
         value: function updateSelect(year, month) {
+          
             var selectYear = this.container.querySelector('.sc-select-year');
             var selectMonth = this.container.querySelector('.sc-select-month');
             selectYear.innerHTML = '';
@@ -406,6 +458,8 @@ var SimpleCalendar = function () {
             selectMonth.value = month;
         }
 
+     
+
     }, {
         key: 'updateWeek',
         value: function updateWeek() {
@@ -419,6 +473,8 @@ var SimpleCalendar = function () {
             });
         }
 
+      
+
     }, {
         key: 'addData',
         value: function addData(year, month) {
@@ -427,10 +483,10 @@ var SimpleCalendar = function () {
             var week = day.getDay();
             if (week == 0) week = 7;
 
-         
+            
             var thispageStart = new Date(Date.parse(day) - (week - 1) * 24 * 3600 * 1000);
 
-         
+            
             var hideMonthWeekToDay = false;
             for (var i = 0; i < window._MonthWeekToDay; i++) {
                 daysElement[i].className = 'sc-item';
@@ -444,7 +500,7 @@ var SimpleCalendar = function () {
                 }
                 daysElement[i].querySelector('.day').innerHTML = writeday;
 
-             
+               
                 if (this._options.showLunarCalendar) {
                     var val = new LunarHelp(writeyear, writemonth, writeday).getLunarDayName();
                     daysElement[i].querySelector('.lunar-day').innerHTML = new LunarHelp(writeyear, writemonth, writeday).getLunarDayName();
@@ -453,6 +509,7 @@ var SimpleCalendar = function () {
                     daysElement[i].classList.add('item-nolunar');
                 }
 
+               
                 if (this.tyear == writeyear && this.tday == writeday && this.tmonth == writemonth) {
                     this.selectDay = daysElement[i];
                     daysElement[i].classList.add("sc-today");
@@ -474,13 +531,15 @@ var SimpleCalendar = function () {
             if (options.showMark) {
                 var daysElement = this.arrayfrom(this.container.querySelectorAll('.sc-item'));
                 var currentmonth = month - 1;
-        
+                
                 if (this._options.main) options.mark = this._options.main(year, month);
                 this._options.sp = [];
 
+                
                 $('.wx-mark').html("");
                 $("#sc-mark-sp").html("");
 
+              
                 var data = options.mark;
                 if (data) {
                     daysElement.forEach(function (v, i) {
@@ -507,14 +566,14 @@ var SimpleCalendar = function () {
                 }
             }
         }
- 
+       
     }, {
         key: 'updateFestival',
         value: function updateFestival(year, month) {
             var options = this._options;
             var daysElement = this.arrayfrom(this.container.querySelectorAll('.sc-item'));
             var currentmonth = month - 1;
-         
+            
             var data = this.languageData['feativals_' + this._options.language];
             var lunardata = this.languageData['lunarFeatival_' + this._options.language];
             var solarTermdata = this.languageData['solarTerm'];
@@ -525,7 +584,7 @@ var SimpleCalendar = function () {
                 var day = +v.querySelector('.day').innerHTML;
                 if (day == 1) currentmonth++;
 
-              
+                
                 if (options.showSolarTerm) {
                     if (solarTermdata[currentmonth + '-' + day]) {
                         v.querySelector('.lunar-day').innerHTML = solarTermdata[currentmonth + '-' + day];
@@ -541,7 +600,7 @@ var SimpleCalendar = function () {
                     }
                 }
 
-               
+                
                 if (lunardata && options.showLunarFestival) {
                     var lunar = new LunarHelp(year, currentmonth, day).getLunarDayNum();
                     if (lunardata[lunar.month + '-' + lunar.day]) {
@@ -551,7 +610,7 @@ var SimpleCalendar = function () {
                 }
             });
         }
-      
+        
     }, {
         key: 'updateHoliday',
         value: function updateHoliday(year, month) {
@@ -566,7 +625,7 @@ var SimpleCalendar = function () {
                     daysElement.forEach(function (v, i) {
                         var day = +v.querySelector('.day').innerHTML;
                         if (day == 1) currentmonth++;
-                    
+                      
                         if (data.indexOf(currentmonth + '-' + day) > 0) {
                             v.classList.add('sc-vocation');
                         }
@@ -575,7 +634,7 @@ var SimpleCalendar = function () {
             }
         }
 
-  
+        
 
     }, {
         key: 'updateTheme',
@@ -614,7 +673,7 @@ var SimpleCalendar = function () {
             }
         }
 
-       
+        
 
     }, {
         key: 'updateEvent',
@@ -694,12 +753,15 @@ var SimpleCalendar = function () {
             };
         }
 
+        
     }, {
         key: 'addMark',
         value: function addMark(day, info) {
             this._options.mark[day] = info;
             this.update();
         }
+
+    
 
     }, {
         key: 'getSelectedDay',
@@ -730,12 +792,15 @@ var SimpleCalendar = function () {
         }
 
 
+
     }, {
         key: 'showHoliday',
         value: function showHoliday(s) {
             this._options.showHoliday = s;
             this.update();
         }
+
+  
 
     }, {
         key: 'showSolarTerm',
@@ -744,6 +809,7 @@ var SimpleCalendar = function () {
             this.update();
         }
 
+    
 
     }, {
         key: 'showLunarFestival',
@@ -752,6 +818,7 @@ var SimpleCalendar = function () {
             this.update();
         }
 
+       
 
     }, {
         key: 'showLunarCalendar',
@@ -760,13 +827,14 @@ var SimpleCalendar = function () {
             this.update();
         }
 
+    
     }, {
         key: 'showMark',
         value: function showMark(s) {
             this._options.showMark = s;
             this.update();
         }
-
+      
     }, {
         key: 'arrayfrom',
         value: function arrayfrom(nidelist) {
@@ -796,13 +864,86 @@ SimpleCalendar.timeupdate = function () {
     });
 };
 
-    
-    days_EN: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], 
-    months_EN; ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    vocation; {
+SimpleCalendar.prototype.languageData = {
+    feativals_CH: {
+        '1-1': '元旦',
+        '2-14': '情人节',
+        '3-8': '妇女节',
+        '3-12': '植树节',
+        '4-1': '愚人节',
+        '4-22': '地球日',
+        '5-1': '劳动节',
+        '5-4': '青年节',
+        '6-1': '儿童节',
+        '7-1': '建党节',
+        '8-1': '建军节',
+        '9-10': '教师节',
+        '10-1': '国庆节',
+        '12-25': '圣诞节'
+    },
+    feativals_EN: {
+        '1-1': "new year’s day",
+        '2-14': "Saint Valentine's Day",
+        '3-8': 'international women’s day',
+        '3-12': "Arbor Day",
+        '4-1': "April Fool's Day",
+        '4-22': "Earth Day",
+        '5-1': "international labour day",
+        '5-4': "Chinese Youth Day",
+        '6-1': "Children's Day",
+        '7-1': "The party's Day",
+        '8-1': "the Army's Day",
+        '9-10': "Teachers' Day",
+        '10-1': 'National Day',
+        '12-25': 'Christmas Day'
+    },
+    lunarFeatival_CH: {
+        '1-1': '春节',
+        '2-2': '龙抬头',
+        '1-15': '元宵节',
+        '4-4': '寒食节',
+        '4-5': '清明节',
+        '5-5': '端午节',
+        '8-15': '中秋节',
+        '9-9': '重阳节',
+        '12-30': '除夕'
+    },
+ 
+    solarTerm: {
+        '2-3': '立春',
+        '5-5': '立夏',
+        '8-7': '立秋',
+        '11-7': '立冬',
+        '2-18': '雨水',
+        '5-20': '小满',
+        '8-22': '处暑',
+        '11-22': '小雪',
+        '3-5': '惊蛰',
+        '6-5': '芒种',
+        '9-7': '白露',
+        '12-6': '大雪',
+        '3-20': '春分',
+        '6-21': '夏至',
+        '9-22': '秋分',
+        '12-21': '冬至',
+        '4-4': '清明',
+        '7-6': '小暑',
+        '10-8': '寒露',
+        '1-5': '小寒',
+        '4-19': '谷雨',
+        '7-22': '大暑',
+        '10-23': '霜降',
+        '1-20': '大寒'
+
+    },
+    days_EN: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    days_CH: ["一", "二", "三", "四", "五", "六", "日"],
+    months_EN: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    months_CH: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+    vocation: {
         data_2016: ['1-1', '1-2', '1-3', '2-7', '2-8', '2-9', '2-10', '2-11', '2-12', '2-13', '4-2', '4-3', '4-4', '4-30', '5-1', '5-2', '6-9', '6-10', '6-11', '9-15', '9-16', '9-17', , '10-1', '10-2', '10-3', '10-4', '10-5', '10-6', '10-7']
     }
-
+};
 
 SimpleCalendar.prototype.tyear = new Date().getFullYear();
 SimpleCalendar.prototype.tmonth = new Date().getMonth() + 1;
@@ -830,8 +971,9 @@ function _addMask(parentObj, val, prior, type) {
         }
         if (title) title = title.trim();
         else title = '';
+        console.log(title)
         $(parentObj).find('.wx-mark').append(
-            "<li class='wx-mark-li selected_" + type + "' style='border-left: 3px solid " + color + ";background:" + color + "1A;'>"
+            "<li class='wx-mark-li selected_" + type + " prior_" + prior + "' style='border-left: 3px solid " + color + ";background:" + color + "1A;'>"
             + prior_circle
             + "<p>" + title + "</p>"
             + "<p>" + name + " </p>" + "</li>"
