@@ -13,7 +13,7 @@
     margin: 3vw 2vw;
     background-color: white;
 }
-#count p{
+#count input{
     width:4vw;
     min-width: 50px;
     height: 7vw;
@@ -64,7 +64,7 @@
 }
 
 
-/*music player*/
+/*play music*/
 .music{
     width: 50px;
     line-height: 50px;

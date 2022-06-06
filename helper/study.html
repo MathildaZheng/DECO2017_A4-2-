@@ -125,12 +125,12 @@
 <!--                    timer-->
                     <div class="time_count">
                         <div id="count" class="flex-row">
-                            <p id="id_H_1">0</p>
-                            <p id="id_H_2">0</p><span style="font-size: 4vw">:</span>
-                            <p id="id_M_1">0</p>
-                            <p id="id_M_2">0</p><span style="font-size: 4vw">:</span>
-                            <p id="id_S_1">0</p>
-                            <p id="id_S_2">0</p>
+                            <input id="id_H_1" type="text" value="">
+                            <input id="id_H_2" type="text" value=""><span style="font-size: 4vw">:</span>
+                            <input id="id_M_1" type="text" value="">
+                            <input id="id_M_2" type="text" value=""><span style="font-size: 4vw">:</span>
+                            <input id="id_S_1" type="text" value="">
+                            <input id="id_S_2" type="text" value="">
                         </div>
                         <input id="start" type="button" value="Start">
                         <input id="stop" type="button" value="Stop">
@@ -315,5 +315,26 @@
 <script src="layui/layui.js"></script>
 <script src="js/music_play.js"></script>
 <script src="js/study.js"></script>
+<script>
+    const hoursElement = document.getElementById("hour_hand");
+    const minutesElement = document.getElementById("minute_hand");
+
+    function animate() {
+        const date = new Date();
+
+        const hour = date.getHours() + date.getMinutes() / 60;
+        const minute = date.getMinutes() + date.getSeconds() / 60;
+
+        hoursElement.setAttribute("transform", `rotate(${(360 / 12) * hour})`);
+        minutesElement.setAttribute("transform", `rotate(${(360 / 60) * minute})`);
+
+        requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+    document.querySelector("svg").style.display = "block";
+
+</script>
 </body>
 </html>

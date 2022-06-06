@@ -30,207 +30,6 @@ function _classCallCheck(instance, Constructor) {
     }
 }
 
-var LunarHelp = function () {
-    function LunarHelp(year, month, day) {
-        _classCallCheck(this, LunarHelp);
-
-        this.lunarInfo = new Array(0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2, 0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977, 0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950, 0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557, 0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5d0, 0x14573, 0x052d0, 0x0a9a8, 0x0e950, 0x06aa0, 0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0, 0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b5a0, 0x195a6, 0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570, 0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x055c0, 0x0ab60, 0x096d5, 0x092e0, 0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5, 0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930, 0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, 0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0);
-
-        this.nStr1 = new Array('日', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十');
-        this.nStr2 = new Array('初', '十', '廿', '三');
-
-        var date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-
-        var i,
-            leap = 0,
-            temp = 0; 
-        var baseDate = new Date(1900, 0, 31);
-        var offset = (date - baseDate) / 86400000;
-
-        
-        for (i = 1900; i < 2050 && offset - this.lYearDays(i) > 0; i++) {
-            offset -= this.lYearDays(i);
-        }
-
-        this.year = i;
-        leap = this.leapMonth(i);
-        this.isLeap = false;
-
-        
-        for (i = 1; i < 13 && offset > 0; i++) {
-        
-            if (leap > 0 && i == leap + 1 && this.isLeap == false) {
-                --i;
-                temp = this.leapDays(this.year);
-            } else {
-                temp = this.monthDays(this.year, i);
-            }
-
-       
-            if (this.isLeap == true && i == leap + 1) this.isLeap = false;
-
-            offset -= temp;
-        }
-
- 
-        if (offset == 0 && leap > 0 && i == leap + 1) if (this.isLeap) {
-            this.isLeap = false;
-        } else {
-            this.isLeap = true;
-            --i;
-        }
-
-        if (offset < 0) {
-            offset += temp;
-            --i;
-        }
-
-        this.month = i;
-    
-        this.day = offset + 1;
-    }
-
-
-
-
-    _createClass(LunarHelp, [{
-        key: 'lYearDays',
-        value: function lYearDays(year) {
-            var i,
-                sum = 0;
-            for (i = 0x8000; i > 0x8; i >>= 1) {
-                sum += this.lunarInfo[year - 1900] & i ? 30 : 29;
-            }
-            return sum + this.leapDays(year); 
-        }
-
-
-
-    }, {
-        key: 'leapDays',
-        value: function leapDays(year) {
-            if (this.leapMonth(year)) return this.lunarInfo[year - 1900] & 0x10000 ? 30 : 29; else return 0;
-        }
-
-
-
-    }, {
-        key: 'leapMonth',
-        value: function leapMonth(year) {
-            return this.lunarInfo[year - 1900] & 0xf;
-        }
-
-
-
-    }, {
-        key: 'monthDays',
-        value: function monthDays(year, month) {
-            return this.lunarInfo[year - 1900] & 0x10000 >> month ? 30 : 29;
-        }
-
-
-
-    }, {
-        key: 'cDay',
-        value: function cDay(d) {
-            var s;
-
-            switch (d) {
-                case 10:
-                    s = '初十';
-                    break;
-                case 20:
-                    s = '二十';
-                    break;
-                    break;
-                case 30:
-                    s = '三十';
-                    break;
-                    break;
-                default:
-                    s = this.nStr2[Math.floor(d / 10)];
-                    s += this.nStr1[d % 10];
-            }
-            return s;
-        }
-
-
-    }, {
-        key: 'cMonth',
-        value: function cMonth(m) {
-            var s;
-
-            switch (m) {
-                case 1:
-                    s = '正月';
-                    break;
-                case 2:
-                    s = '二月';
-                    break;
-                case 3:
-                    s = '三月';
-                    break;
-                case 4:
-                    s = '四月';
-                    break;
-                case 5:
-                    s = '五月';
-                    break;
-                case 6:
-                    s = '六月';
-                    break;
-                case 7:
-                    s = '七月';
-                    break;
-                case 8:
-                    s = '八月';
-                    break;
-                case 9:
-                    s = '九月';
-                    break;
-                case 10:
-                    s = '十月';
-                    break;
-                case 11:
-                    s = '十一月';
-                    break;
-                case 12:
-                    s = '十二月';
-                    break;
-                default:
-                    break;
-            }
-            return s;
-        }
-
-
-    }, {
-        key: 'getLunarDay',
-        value: function getLunarDay() {
-            return cMonth(this.month) + cDay(this.day);
-        }
-
-    }, {
-        key: 'getLunarDayName',
-        value: function getLunarDayName() {
-
-            if (this.day == 1) return this.cMonth(this.month);
-            return this.cDay(this.day);
-        }
-
-
-    }, {
-        key: 'getLunarDayNum',
-        value: function getLunarDayNum() {
-            return {
-                day: this.day,
-                month: this.month
-            };
-        }
-    }]);
-
-    return LunarHelp;
-}();
 var myConfig = {};
 
 window._clickSP = function (obj,num) {
@@ -260,27 +59,28 @@ window._click_prior = function (obj,num) {
 
 
 window._MonthWeekToDay = 42;
-var SimpleCalendar = function () {
 
+var SimpleCalendar = function () {
+    //Constructor
     function SimpleCalendar(query, options) {
         _classCallCheck(this, SimpleCalendar);
-      
+        //default allocation
         this._defaultOptions = {
             width: '500px',
             height: '500px',
-            language: 'en', 
-            showLunarCalendar: true, 
-            showHoliday: true, 
-            showFestival: true, 
-            showLunarFestival: true, 
+            language: 'en',
+            showLunarCalendar: true,
+            showHoliday: true,
+            showFestival: true,
+            showLunarFestival: true,
             showSolarTerm: true,
-            showMark: true, 
-            realTime: true, 
+            showMark: true,
+            realTime: true,
             timeRange: {
                 startYear: 1900,
                 endYear: 2049
             },
-            timeZone: "", 
+            timeZone: "",
             mark: {},
             markColor: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
             theme: {
@@ -300,20 +100,15 @@ var SimpleCalendar = function () {
                 invalidDays: '#C1C0C0'
             }
         };
-
-        
         this.container = document.querySelector(query);
-
         this._defaultOptions.width = this.container.style.offsetWidth;
         this._defaultOptions.height = this.container.style.offsetHeight;
 
-        
         myConfig = this._options = this.optionAssign(this._defaultOptions, options);
 
         this.create();
     }
 
-  
     _createClass(SimpleCalendar, [{
         key: 'optionAssign',
         value: function optionAssign(optionsA, optionsB) {
@@ -324,7 +119,6 @@ var SimpleCalendar = function () {
             }
             return optionsA;
         }
-    
     }, {
         key: 'create',
         value: function create() {
@@ -364,16 +158,16 @@ var SimpleCalendar = function () {
                     '<div class="wx-mark-cr"><ul class="wx-mark"></ul></div>' +
                     '</div>';
             }
-        
+
             this.updateSelect(this.tyear, this.tmonth);
-         
+
             this.update();
-       
+
             if (this._options.realTime)
                 self.setInterval('SimpleCalendar.timeupdate()', 200);
         }
 
-      
+
     }, {
         key: 'update',
         value: function update() {
@@ -383,14 +177,12 @@ var SimpleCalendar = function () {
             this.updateSize();
             this.updateWeek();
             this.addData(year, month);
-            this.updateHoliday(year, month);
+            // this.updateHoliday(year, month);
             this.updateMark(year, month);
-            this.updateFestival(year, month);
+            // this.updateFestival(year, month);
             this.updateEvent();
             this.updateTheme(this._options.theme);
         }
-
-     
 
     }, {
         key: 'updateSize',
@@ -398,12 +190,13 @@ var SimpleCalendar = function () {
             var width = arguments.length <= 0 || arguments[0] === undefined ? this._options.width : arguments[0];
             var height = arguments.length <= 1 || arguments[1] === undefined ? this._options.height : arguments[1];
 
-           
+
             this._options.width = width;
             this._options.height = height;
 
             this.container.style.width = width;
-           
+
+
             if (parseInt(width) < 500) {
                 var actions = this.arrayfrom(this.container.querySelectorAll('.sc-actions'));
                 actions.forEach(function (v, i) {
@@ -436,12 +229,10 @@ var SimpleCalendar = function () {
             }
         }
 
-      
 
     }, {
         key: 'updateSelect',
         value: function updateSelect(year, month) {
-          
             var selectYear = this.container.querySelector('.sc-select-year');
             var selectMonth = this.container.querySelector('.sc-select-month');
             selectYear.innerHTML = '';
@@ -458,7 +249,6 @@ var SimpleCalendar = function () {
             selectMonth.value = month;
         }
 
-     
 
     }, {
         key: 'updateWeek',
@@ -473,7 +263,6 @@ var SimpleCalendar = function () {
             });
         }
 
-      
 
     }, {
         key: 'addData',
@@ -483,10 +272,8 @@ var SimpleCalendar = function () {
             var week = day.getDay();
             if (week == 0) week = 7;
 
-            
             var thispageStart = new Date(Date.parse(day) - (week - 1) * 24 * 3600 * 1000);
 
-            
             var hideMonthWeekToDay = false;
             for (var i = 0; i < window._MonthWeekToDay; i++) {
                 daysElement[i].className = 'sc-item';
@@ -500,7 +287,6 @@ var SimpleCalendar = function () {
                 }
                 daysElement[i].querySelector('.day').innerHTML = writeday;
 
-               
                 if (this._options.showLunarCalendar) {
                     var val = new LunarHelp(writeyear, writemonth, writeday).getLunarDayName();
                     daysElement[i].querySelector('.lunar-day').innerHTML = new LunarHelp(writeyear, writemonth, writeday).getLunarDayName();
@@ -509,7 +295,6 @@ var SimpleCalendar = function () {
                     daysElement[i].classList.add('item-nolunar');
                 }
 
-               
                 if (this.tyear == writeyear && this.tday == writeday && this.tmonth == writemonth) {
                     this.selectDay = daysElement[i];
                     daysElement[i].classList.add("sc-today");
@@ -531,15 +316,14 @@ var SimpleCalendar = function () {
             if (options.showMark) {
                 var daysElement = this.arrayfrom(this.container.querySelectorAll('.sc-item'));
                 var currentmonth = month - 1;
-                
+
                 if (this._options.main) options.mark = this._options.main(year, month);
                 this._options.sp = [];
 
-                
+
                 $('.wx-mark').html("");
                 $("#sc-mark-sp").html("");
 
-              
                 var data = options.mark;
                 if (data) {
                     daysElement.forEach(function (v, i) {
@@ -566,77 +350,8 @@ var SimpleCalendar = function () {
                 }
             }
         }
-       
-    }, {
-        key: 'updateFestival',
-        value: function updateFestival(year, month) {
-            var options = this._options;
-            var daysElement = this.arrayfrom(this.container.querySelectorAll('.sc-item'));
-            var currentmonth = month - 1;
-            
-            var data = this.languageData['feativals_' + this._options.language];
-            var lunardata = this.languageData['lunarFeatival_' + this._options.language];
-            var solarTermdata = this.languageData['solarTerm'];
-            if (!data) {
-                console.error('language error!');
-            }
-            daysElement.forEach(function (v, i) {
-                var day = +v.querySelector('.day').innerHTML;
-                if (day == 1) currentmonth++;
 
-                
-                if (options.showSolarTerm) {
-                    if (solarTermdata[currentmonth + '-' + day]) {
-                        v.querySelector('.lunar-day').innerHTML = solarTermdata[currentmonth + '-' + day];
-                        v.classList.add('sc-festival');
-                    }
-                }
-
-               
-                if (options.showFestival) {
-                    if (data[currentmonth + '-' + day]) {
-                        v.querySelector('.lunar-day').innerHTML = data[currentmonth + '-' + day];
-                        v.classList.add('sc-festival');
-                    }
-                }
-
-                
-                if (lunardata && options.showLunarFestival) {
-                    var lunar = new LunarHelp(year, currentmonth, day).getLunarDayNum();
-                    if (lunardata[lunar.month + '-' + lunar.day]) {
-                        v.querySelector('.lunar-day').innerHTML = lunardata[lunar.month + '-' + lunar.day];
-                        v.classList.add('sc-festival');
-                    }
-                }
-            });
-        }
-        
-    }, {
-        key: 'updateHoliday',
-        value: function updateHoliday(year, month) {
-
-            var options = this._options;
-            if (options.showHoliday) {
-                var daysElement = this.arrayfrom(this.container.querySelectorAll('.sc-item'));
-                var currentmonth = month - 1;
-                
-                var data = this.languageData.vocation['data_' + year];
-                if (data) {
-                    daysElement.forEach(function (v, i) {
-                        var day = +v.querySelector('.day').innerHTML;
-                        if (day == 1) currentmonth++;
-                      
-                        if (data.indexOf(currentmonth + '-' + day) > 0) {
-                            v.classList.add('sc-vocation');
-                        }
-                    });
-                }
-            }
-        }
-
-        
-
-    }, {
+    },{
         key: 'updateTheme',
         value: function updateTheme(theme) {
             if (this._options.theme.changeAble) {
@@ -673,7 +388,6 @@ var SimpleCalendar = function () {
             }
         }
 
-        
 
     }, {
         key: 'updateEvent',
@@ -753,15 +467,12 @@ var SimpleCalendar = function () {
             };
         }
 
-        
     }, {
         key: 'addMark',
         value: function addMark(day, info) {
             this._options.mark[day] = info;
             this.update();
         }
-
-    
 
     }, {
         key: 'getSelectedDay',
@@ -771,7 +482,6 @@ var SimpleCalendar = function () {
             var selectDay = this.selectDay.querySelector('.day').innerHTML;
             return new Date(selectYear, selectMonth - 1, selectDay);
         }
-
 
     }, {
         key: 'setLenguage',
@@ -791,8 +501,6 @@ var SimpleCalendar = function () {
             this.update();
         }
 
-
-
     }, {
         key: 'showHoliday',
         value: function showHoliday(s) {
@@ -800,25 +508,18 @@ var SimpleCalendar = function () {
             this.update();
         }
 
-  
-
     }, {
         key: 'showSolarTerm',
         value: function showSolarTerm(s) {
             this._options.showSolarTerm = s;
             this.update();
         }
-
-    
-
     }, {
         key: 'showLunarFestival',
         value: function showLunarFestival(s) {
             this._options.showLunarFestival = s;
             this.update();
         }
-
-       
 
     }, {
         key: 'showLunarCalendar',
@@ -827,14 +528,13 @@ var SimpleCalendar = function () {
             this.update();
         }
 
-    
     }, {
         key: 'showMark',
         value: function showMark(s) {
             this._options.showMark = s;
             this.update();
         }
-      
+
     }, {
         key: 'arrayfrom',
         value: function arrayfrom(nidelist) {
@@ -844,6 +544,7 @@ var SimpleCalendar = function () {
             });
             return array;
         }
+
 
     }]);
 
@@ -860,89 +561,13 @@ SimpleCalendar.timeupdate = function () {
     if (nm < 10) nm = '0' + nm;
     if (ns < 10) ns = '0' + ns;
     [].forEach.call(timespan, function (v) {
-        v.innerHTML = '时间：' + nh + ":" + nm + ':' + ns;
+        v.innerHTML = 'time：' + nh + ":" + nm + ':' + ns;
     });
 };
 
 SimpleCalendar.prototype.languageData = {
-    feativals_CH: {
-        '1-1': '元旦',
-        '2-14': '情人节',
-        '3-8': '妇女节',
-        '3-12': '植树节',
-        '4-1': '愚人节',
-        '4-22': '地球日',
-        '5-1': '劳动节',
-        '5-4': '青年节',
-        '6-1': '儿童节',
-        '7-1': '建党节',
-        '8-1': '建军节',
-        '9-10': '教师节',
-        '10-1': '国庆节',
-        '12-25': '圣诞节'
-    },
-    feativals_EN: {
-        '1-1': "new year’s day",
-        '2-14': "Saint Valentine's Day",
-        '3-8': 'international women’s day',
-        '3-12': "Arbor Day",
-        '4-1': "April Fool's Day",
-        '4-22': "Earth Day",
-        '5-1': "international labour day",
-        '5-4': "Chinese Youth Day",
-        '6-1': "Children's Day",
-        '7-1': "The party's Day",
-        '8-1': "the Army's Day",
-        '9-10': "Teachers' Day",
-        '10-1': 'National Day',
-        '12-25': 'Christmas Day'
-    },
-    lunarFeatival_CH: {
-        '1-1': '春节',
-        '2-2': '龙抬头',
-        '1-15': '元宵节',
-        '4-4': '寒食节',
-        '4-5': '清明节',
-        '5-5': '端午节',
-        '8-15': '中秋节',
-        '9-9': '重阳节',
-        '12-30': '除夕'
-    },
- 
-    solarTerm: {
-        '2-3': '立春',
-        '5-5': '立夏',
-        '8-7': '立秋',
-        '11-7': '立冬',
-        '2-18': '雨水',
-        '5-20': '小满',
-        '8-22': '处暑',
-        '11-22': '小雪',
-        '3-5': '惊蛰',
-        '6-5': '芒种',
-        '9-7': '白露',
-        '12-6': '大雪',
-        '3-20': '春分',
-        '6-21': '夏至',
-        '9-22': '秋分',
-        '12-21': '冬至',
-        '4-4': '清明',
-        '7-6': '小暑',
-        '10-8': '寒露',
-        '1-5': '小寒',
-        '4-19': '谷雨',
-        '7-22': '大暑',
-        '10-23': '霜降',
-        '1-20': '大寒'
-
-    },
     days_EN: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    days_CH: ["一", "二", "三", "四", "五", "六", "日"],
     months_EN: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    months_CH: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-    vocation: {
-        data_2016: ['1-1', '1-2', '1-3', '2-7', '2-8', '2-9', '2-10', '2-11', '2-12', '2-13', '4-2', '4-3', '4-4', '4-30', '5-1', '5-2', '6-9', '6-10', '6-11', '9-15', '9-16', '9-17', , '10-1', '10-2', '10-3', '10-4', '10-5', '10-6', '10-7']
-    }
 };
 
 SimpleCalendar.prototype.tyear = new Date().getFullYear();
@@ -985,7 +610,6 @@ function _addMask(parentObj, val, prior, type) {
 window.onresize = function () {
     setHeight();
 }
-
 
 function setHeight() {
     var height = document.documentElement.clientHeight - 30 - 35 - 40;

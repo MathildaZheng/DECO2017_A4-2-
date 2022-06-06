@@ -13,11 +13,11 @@
     float: left;
     margin-right: 20px;
     -moz-user-select: none;
-   
+    
     -webkit-user-select: none;
-  
+    /*webkitbrowser*/
     -ms-user-select: none;
-
+    /*IE10*/
     user-select: none;
     -webkit-text-size-adjust: none;
     font-size: 16px;
@@ -83,7 +83,7 @@
 
 }
 
-
+/*//@-lunar*/
 .sc-item .wx-day .lunar-day {
     float: left;
 }
@@ -112,7 +112,7 @@
     padding: 0px;
     font-size: 12px;
     font-weight: normal;
- 
+    /*//@-Force no line drawing, and display ellipsis redundantly.*/
     white-space: nowrap;
     white-space: nowrap;
     overflow: hidden;

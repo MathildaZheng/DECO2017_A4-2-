@@ -67,7 +67,7 @@
                         </svg>
                     </div>
                     <div class="svg-a active">
-                        <a href="list.html">Data</a>
+                        <a href="list.html">list</a>
                     </div>
                 </li>
                 <li>
@@ -132,8 +132,9 @@
 </div>
 <script src="js/jquery.min.js"></script>
 <script >
-    var localTest = localStorage.getItem('test');
-    var jsonArray = JSON.parse(localTest);
+    var local_task_new= localStorage.getItem('local_task_new');
+    var task_array = JSON.parse(local_task_new);
+
     var local_div_Test = localStorage.getItem('local_div_Test');
     var json_div_Array = JSON.parse(local_div_Test);
 
@@ -146,18 +147,23 @@
         for(var i in json) {
             var name=json[i].task;
             var div_task=json_div_Array[name];
+
             var type=json[i].type;
             var step=json_div_Array[name].length;
 
             // console.log(name);
             var all=div_task.length;
             var finish=0;
+            var div_task_inner=''
             for(var j in div_task){
                 if(div_task[j].isfinish===1){
                     finish++;
                 }
+                div_task_inner+='<li><p>'+div_task[j].task+'</p></li>'
             }
+
             var pro_width=finish*100/all;
+
             if (i % 2 == 0) {
                 document.getElementById("ul").innerHTML+=' <li class="li">\n' +
                     '                            <div class="layui-progress data-pro">\n' +
@@ -169,19 +175,11 @@
                     '                                <p>(step '+step+' )</p>\n' +
                     '                            </div>\n' +
                     '                            <div class="border-col col-up"></div>\n' +
-                    '                            <div class="date">'+json[i].date+'</div>\n' +
+                    '                            <div class="date">'+json[i].due_date+'</div>\n' +
                     '                            <div class="content">\n' +
-                    '                                <p class="title-3">Content of the work</p>\n' +
-                    '                                <button class="btn btn1" >VIEW</button>\n' +
-                    '                                <div class="data-con">'+json[i].content+'</div>\n' +
-                    '                                <p class="title-3">RESOURCES MATERIAL LINK</p>\n' +
-                    '                                <button class="btn btn3" >OPEN ALL</button>\n' +
-                    '                                <button class="btn btn2" >ADD</button>\n' +
+                    '                                <p class="title-3">divide task</p>\n' +
                     '                                <div class="data-con data-link">\n' +
-                    '                                    <ul>\n' +
-                    '                                        <li>\n' +
-                    '                                            <a href="'+json[i].link+'" >'+json[i].link+'</a>\n' +
-                    '                                        </li>\n' +
+                    '                                    <ul>\n' + div_task_inner+
                     '                                    </ul>\n' +
                     '                                </div>\n' +
                     '                            </div>\n' +
@@ -189,21 +187,13 @@
             }else {
                 document.getElementById("ul").innerHTML+=' <li class="li ">\n' +
                     '                            <div class="content">\n' +
-                    '                                <p class="title-3">Content of the work</p>\n' +
-                    '                                <button class="btn btn1" >VIEW</button>\n' +
-                    '                                <div class="data-con">'+json[i].content+'</div>\n' +
-                    '                                <p class="title-3">RESOURCES MATERIAL LINK</p>\n' +
-                    '                                <button class="btn btn3" >OPEN ALL</button>\n' +
-                    '                                <button class="btn btn2" >ADD</button>\n' +
+                    '                                <p class="title-3">divide task</p>\n' +
                     '                                <div class="data-con data-link">\n' +
-                    '                                    <ul>\n' +
-                    '                                        <li>\n' +
-                    '                                            <a href="'+json[i].link+'" >'+json[i].link+'</a>\n' +
-                    '                                        </li>\n' +
+                    '                                    <ul>\n'  + div_task_inner+
                     '                                    </ul>\n' +
                     '                                </div>\n' +
                     '                            </div>\n' +
-                    '                            <div class="date">'+json[i].date+'</div>\n' +
+                    '                            <div class="date">'+json[i].due_date+'</div>\n' +
                     '                            <div class="border-col col-down"></div>\n' +
                     '                            <div class="name name2">\n' +
                     '                                <p>'+type_arr[type]+'</p>\n' +
@@ -222,11 +212,11 @@
     function on_clickSP(num) {
         var json=[];
         if(num===-1){
-            add_html(jsonArray);
+            add_html(task_array);
         }else{
-            for(var i in jsonArray){
-                if(jsonArray[i].type==num){
-                    json.push(jsonArray[i])
+            for(var i in task_array){
+                if(task_array[i].type==num){
+                    json.push(task_array[i])
                 }
             }
             console.log(json)

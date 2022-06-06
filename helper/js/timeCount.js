@@ -2,49 +2,106 @@ function $(id) {
     return document.getElementById(id)
 }
 window.onload = function() {
-    //click start, start count
-    var count = 0
-    var timer = null //The timer variable records the return value of the timer setInterval
-    $("start").onclick = function() {
-        timer = setInterval(function() {
-            count++;
-            console.log(count)
-            // Need to change the value of hours, minutes and seconds on the page
-            console.log($("id_S"))
-            $("id_S_2").innerHTML =parseInt(count % 60%10)
-            $("id_S_1").innerHTML = parseInt(count % 60/10)
+    var t;
+    var Minute;
+    var Second;
+    var hour;
+    var d;
+    function begin() {
+        if (Second != 0) {
+            Second--;
+            $("id_S_2").value = Second%10
+            $("id_S_1").value = Math.floor(Second/10)
 
-            $("id_M_2").innerHTML = parseInt(count / 60 % 60%10)
-            $("id_M_1").innerHTML = parseInt(count / 60 % 60/10)
+            $("id_M_2").value =Minute%10
+            $("id_M_1").value = Math.floor(Minute/10)
 
 
-            $("id_H_2").innerHTML = parseInt(count / 60 / 60 %10)
-            $("id_H_1").innerHTML = parseInt(count / 60 / 60 /10)
+            $("id_H_2").value = hour%10
+            $("id_H_1").value = Math.floor(hour/10)
+
+        } else {
+            if (Minute > 0) {
+                Minute--;
+                Second = 59;
+                $("id_S_2").value = Second%10
+                $("id_S_1").value = Math.floor(Second/10)
+
+                $("id_M_2").value =Minute%10
+                $("id_M_1").value = Math.floor(Minute/10)
+
+
+                $("id_H_2").value = hour%10
+                $("id_H_1").value = Math.floor(hour/10)
+            } else {
+                if (hour > 0) {
+                    hour--;
+                    Minute = 59;
+                    $("id_S_2").value = Second%10
+                    $("id_S_1").value = Math.floor(Second/10)
+
+                    $("id_M_2").value =Minute%10
+                    $("id_M_1").value = Math.floor(Minute/10)
+
+
+                    $("id_H_2").value = hour%10
+                    $("id_H_1").value = Math.floor(hour/10)
+                }else {
+                    clearTimeout(t);
+                }
+            }
+        }
+        t = setTimeout(function () {
+            begin()
         }, 1000)
     }
-    $("stop").onclick = function() {
-        //cancel timer
-        clearInterval(timer)
+    $("start").onclick = function() {
+        Second= parseInt($("id_S_1").value)*10+parseInt($("id_S_2").value);
+        Minute= parseInt($("id_M_1").value)*10+parseInt($("id_M_2").value);
+        hour =parseInt($("id_H_1").value)*10+parseInt($("id_H_2").value);
+
+        console.log(Minute)
+        console.log(Second)
+        console.log(hour)
+
+        $("id_S_2").value = Second%10
+        $("id_S_1").value = Math.floor(Second/10)
+
+        $("id_M_2").value =Minute%10
+        $("id_M_1").value = Math.floor(Minute/10)
+
+
+        $("id_H_2").value = hour%10
+        $("id_H_1").value = Math.floor(hour/10)
+        setTimeout(function () {
+            begin()
+        }, 1000);
     }
-    //Stop counting Data clearing Page display data clearing
+    $("stop").onclick = function() {
+        clearTimeout(t);
+    }
+
     $("reset").onclick = function() {
-        //cancel timer
-        $("stop").onclick()
-        // clearInterval(timer)
-        //Data reset Total seconds reset
-        count = 0
-        //Clear page display data
-        $("id_S_2").innerHTML =0
-        $("id_S_1").innerHTML = 0
 
-        $("id_M_2").innerHTML = 0
-        $("id_M_1").innerHTML = 0
+        $("id_S_2").value =0
+        $("id_S_1").value = 0
 
-        $("id_H_2").innerHTML = 0
-        $("id_H_1").innerHTML = 0
+        $("id_M_2").value = 0
+        $("id_M_1").value = 0
+
+        $("id_H_2").value = 0
+        $("id_H_1").value = 0
+        clearTimeout(t);
     }
     $("finish").onclick = function() {
-        //cancel timer
-        $("reset").onclick()
+        $("id_S_2").value =0
+        $("id_S_1").value = 0
+
+        $("id_M_2").value = 0
+        $("id_M_1").value = 0
+
+        $("id_H_2").value = 0
+        $("id_H_1").value = 0
+        clearTimeout(t);
     }
 }

@@ -1,18 +1,18 @@
-//播放列表
+//Music list
 var music_list =[
         {
             "id":"1",
-            "name":"亲爱的",
+            "name":"love story",
             "src":"music/whkl.mp3"
         },
         {
             "id":"2",
-            "name":"其实",
+            "name":"ln my blood",
             "src":"music/lryh.mp3"
         },      
         {
             "id":"3",
-            "name":"好想就这样",
+            "name":"Faded",
             "src":"music/lx.mp3"
         },
     ]
@@ -34,7 +34,7 @@ var music_list =[
     var play_list = document.querySelector("#play_list");
     var play_list_area = document.querySelector("#play_list_area");
 
-//play list
+//music list
     function loadPlayList(){
         for(var i=0;i<music_list.length;i++){
             var music = music_list[i];
@@ -48,7 +48,7 @@ var music_list =[
 
             liTag.setAttribute("data-index",i);
             liTag.addEventListener("click",function(){
-                //Gets the song id of each li tag
+                //Get the song id of each li tag
                 var index = this.getAttribute("data-index");
                 //Assign the song id to the global variable play_index
                 play_index = index;
@@ -142,7 +142,7 @@ var music_list =[
     },100)
     
 
-//hide play list
+//Hide the playlist flag=0 means the list is hidden
     function showMusicList(){
         if(flag){
             play_list_area.style.display="none";

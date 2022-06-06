@@ -119,17 +119,17 @@
         <div class="main_content task_main" style="margin-top: 50px;">
 <!--            add task form-->
             <div class="form">
-                <form class="layui-form">
+                <form class="layui-form" lay-filter="formTask">
 <!--                    task name-->
                     <div class="layui-form-item">
                         <div class="layui-input-block" style="margin-left: 0;">
-                            <input type="text" name="task" placeholder="Task name" autocomplete="off" class="layui-input task btn-border">
+                            <input type="text" name="task" placeholder="Divide Task name" autocomplete="off" class="layui-input task btn-border">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">Type</label>
                         <div class="layui-input-block btn-border">
-                            <select name="type" lay-filter="type">
+                            <select name="type">
                                 <option value="0">Courses</option>
                                 <option value="1">Assessment</option>
                                 <option value="2">Meeting</option>
@@ -163,11 +163,12 @@
                             <textarea name="link"  placeholder="" class="layui-textarea btn-border"></textarea>
                         </div>
                     </div>
-<!--submit task button     jump to the calendar.html-->
-                    <div class="layui-form-item float-right">
+                    <div class="layui-form-item layui-form-text">
                         <div class="layui-input-block">
-                            <button class="layui-btn bg-1" lay-submit lay-filter="demo1">Finish</button>
-                        </div>
+                        <button class="add_divide_task layui-bg-black layui-btn-radius" lay-submit lay-filter="div_add">
+                        +
+                        </button>
+                    </div>
                     </div>
                 </form>
             </div>
@@ -175,17 +176,17 @@
             <div class="div_task">
                 <!--                View divide tasks-->
                 <form class="layui-form flex-row">
-                    <!--                    input the task name to query-->
+                    <!--   input the task name to query-->
                     <div class="layui-form-item">
                         <label class="layui-form-label">Task name</label>
                         <div class="layui-input-block">
-                            <input type="text" name="task" placeholder="Task name" autocomplete="off" class="layui-input task btn-border">
+                            <input id="task_name"  type="text" name="task" placeholder="Task name" autocomplete="off" class="layui-input task btn-border" onchange="task_change()">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">Type</label>
                         <div class="layui-input-block btn-border">
-                            <select name="type" lay-filter="type">
+                            <select id="task_type" name="type" lay-filter="type">
                                 <option value="0">Courses</option>
                                 <option value="1">Assessment</option>
                                 <option value="2">Meeting</option>
@@ -193,19 +194,18 @@
                             </select>
                         </div>
                     </div>
-                    <!--                    query button-->
-                    <div class="layui-form-item float-right">
-                        <div class="layui-input-block">
-                            <button class="layui-btn bg-1" id="search_div" lay-submit lay-filter="search_div_task">Search</button>
-                        </div>
+                    <div class="layui-form-item flex-row">
+                        <label class="layui-form-label">Due Date</label>
+                        <input type="text" name="due_date" placeholder="Date" class="layui-input btn-border" id="due_date">
                     </div>
                 </form>
-                <!--                divide task query result list-->
+
+                <!--     divide task query result list-->
                 <div class="list"  style="width: 100%;margin-top: 0;">
                     <div class="flex-row">
                         <p class="title-4">Divide Task</p>
                         <div class="flex-row divide_task_pro"  >
-                            <!--                        prograss bar-->
+                            <!--                       progress-->
                             <p class="title-3 margin-left-20">Not Done</p>
                             <div class="layui-progress layui-progress-big" style="width: 20vw;">
                                 <div class="layui-progress-bar bg-1" id="pro"></div>
@@ -214,46 +214,15 @@
                             <p class="title-3 margin-left-20">Done</p>
                         </div>
                     </div>
-
                     <div id="taskTable">
                         <ul class="task_tbody" id="task_tbody">
                         </ul>
                     </div>
-
-                    <!--                    add_divide -->
-                    <form class="layui-form add_form" id="add_form" style="display: none">
-                        <div class="flex-row">
-                            <div class="margin-20 margin-left-20">
-                                <input name="isfinish" type="checkbox" lay-skin="primary" name="" title="">
-                            </div>
-                            <div class="task-name">
-                                <input name="name" type="text " class="input_add">
-                            </div>
-
-                            <div class="task-time margin-20">
-                                <div class="layui-form-item type_divide">
-                                    <input id="date_add" type="text" name="date" placeholder="Date" class="layui-input btn-border divide_task_date">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18.8" height="20.889" viewBox="0 0 18.8 20.889">
-                                        <path id="ic_event_24px" d="M17.622,12.489H12.4v5.222h5.222ZM16.578,1V3.089H8.222V1H6.133V3.089H5.089A2.079,2.079,0,0,0,3.01,5.178L3,19.8a2.088,2.088,0,0,0,2.089,2.089H19.711A2.1,2.1,0,0,0,21.8,19.8V5.178a2.1,2.1,0,0,0-2.089-2.089H18.666V1Zm3.133,18.8H5.089V8.311H19.711Z" transform="translate(-3 -1)" fill="#fb9696"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="task-time btn-border margin-20">
-                                <input id="time_add" type="text" name="time" placeholder="Time" class="layui-input btn-border divide_task_time" >
-                            </div>
+                    <div class="layui-form-item float-right">
+                        <div class="layui-input-block">
+                            <button class="layui-btn bg-1" onclick="to_cal()">Finish</button>
                         </div>
-                        <div class="layui-form-item float-right">
-                            <div class="layui-input-block" style="margin-right: 10px;">
-                                <button class="layui-btn bg-1" lay-submit lay-filter="demo_add">Finish</button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!--                    add divide task btn-->
-                    <button class="add_divide_task layui-bg-black layui-btn-radius" onclick="add_div_task()">
-                        +
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>

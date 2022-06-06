@@ -11,27 +11,35 @@ function main() {
     var myCalendar = new SimpleCalendar('#calendar', {
         width: '100%',
         height: '500px',
-        language: 'EN', 
-        showLunarCalendar: false, 
-        showHoliday: false, 
-        showFestival: false, 
-        showLunarFestival: false, 
-        showSolarTerm: false, 
-        showMark: true, 
-        realTime: false, 
+        language: 'EN',
+        showLunarCalendar: false,
+        showHoliday: false,
+        showFestival: false,
+        showLunarFestival: false,
+        showSolarTerm: false,
+        showMark: true,
+        realTime: false,
         timeRange: {
             startYear: 2002,
             endYear: 2049
         },
         mark: {},
-        markColor: ['#82C43C', '#1E75FF', '#FF9AD5', '#DDDF00', '#FF974A'],
+        markColor: ['#82C43C', '#1E75FF', '#FF9AD5', '#DDDF00', '#FF974A'],//记事各个颜色
         main: function (year, month) {
-           
-            var index = -1;
-            if (layer) index = layer.msg('正在查询数据......', {icon: 16, shade: 0.6});
 
-            var localTest = localStorage.getItem('test');
-            var jsonArray = JSON.parse(localTest);
+            var index = -1;
+            if (layer) index = layer.msg('data......', {icon: 16, shade: 0.6});
+
+            var local_div_Test = localStorage.getItem('local_div_Test');
+            var json_div_Array = JSON.parse(local_div_Test);
+            var jsonArray = [];
+            for (var m in json_div_Array){
+                for(var n in json_div_Array[m]){
+                    jsonArray.push(json_div_Array[m][n])
+                }
+            }
+            console.log("jsonArray")
+            console.log(jsonArray)
             var resultObj = {};
             for(var i in jsonArray){
                 var array = [];
@@ -48,8 +56,6 @@ function main() {
                 });
                 resultObj[date] = array;
             }
-
-
             if (layer) layer.close(index);
             console.log(resultObj);
             return resultObj;
