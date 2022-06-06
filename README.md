@@ -2,8 +2,11 @@
 # Introduction
 >Helpers are tools that help users manage and organize their studies and work. Help users to formulate clear and scientific work and study plans, and help users to deeply track and understand their personal learning and work to help them adjust in time.
 
-# Feedback
 # Design Insight
+>Simple and reasonable arrangements for study plans.
+>Effective tracking of learning situation and homework height.
+>For the management of learning content, saving managers and time
+
 
 
   # Calender page
@@ -28,33 +31,52 @@
    ## Iteration
    >The task bar and the step-by-step task bar are swapped left and right, and the position of the progress bar is re-adjusted, which is convenient for users to use more clearly.
    ## Function
+   >Task
+   >Devide task
+   >Type
+   >Improtance level
+   >Date
+   >Reference link
 
    ## How to use
-   >Add tasks to be completed on the left taskbar, set due dates and task types. In the distribution task bar on the right, distribute the tasks, enter the arrangement of each step, arrange the working time, and select the degree of importance. Supplementary and required link information for step-by-step tasks can be filled in below. After completion, you can view the arrangement of distributed tasks on the calender page, and at the same time, you can view the tasks on the task page to quickly find and understand the progress of the task.
+   >First enter the task on the right side, select the category and the task deadline. Then step through the tasks on the left side, enter the content, select the category and, schedule the work time (the time needs to be selected from the calendar), describe the task specifics, add the profile link and click the plus sign, the devide task will be added and displayed on the right side, click the finish button, the task and devide task will be added to the list and calendar view respectively
    
   # List page 
-
+  >The list page will show the task in the form of timeline according to the deadline, and will display the devide task list and progress bar of the task, which is convenient for users to view the status and management of all tasks. Also, you can choose to view different types of tasks by category.
    ## The picture of list
    ## Iteration
+   >The timeline content is changed from devide task to task to avoid duplication with calender content, and the task content is changed from link to devide task list, and the timeline is changed to according to the task's due time. Keep the progress bar and task ctegories of task
    ## Function
+   >Timeline
+   >Progress bar
+   >Task categories of task
+   >Devide task list
    ## How to use
-
+   >Select the type of view in the category and the task will be viewed as a timeline, each task will be marked with a deadline and a progress bar for the task. The box will show the devide task list of the task.
 
   # Study page 
-
+  >The study page is where the user sets the time to study on the timer when studying. It will also record the user's study status. Today's task bar will list the day's tasks to help remind users of today's tasks. The clock will show the time and the background of the clock will show the rest, work and relaxation schedule of the day to help users not to forget other schedules while studying.Music player to play music while studying
    ## The picture of list
    ## Iteration
+   >Change the timer to be able to set a specific time
    ## Function
+   >Timer
+   >Clock
+   >Today's task list
+   >Music player
+   >Learning situation record
    ## How to use
-
-
-
-
+   >First set the study time in the timer, click start and start working according to the tasks in today's task list. At the same time, you can use the music player to play music. Check the time of the clock in case you miss other schedules. When you are studying, you can click stop to pause the time, reset to reset the time, and finish to finish. The status of the study will be shown in the progress bar on the right.
 
 
 # Reference 
-
 >js.foundation, J. (2022). jQuery. Retrieved 5 June 2022, from https://jquery.com/
+
+>M.youtube.com. 2022. [online] Available at: <https://m.youtube.com/watch?v=x7WJEmxNlEs> [Accessed 6 June 2022].
+
+>M.youtube.com. 2022. [online] Available at: <https://m.youtube.com/watch?v=QTHRWGn_sJw> [Accessed 6 June 2022].
+
+>M.youtube.com. 2022. [online] Available at: <https://m.youtube.com/watch?v=o1yMqPyYeAo> [Accessed 6 June 2022].
 
 >Layui. (2022). Retrieved 5 June 2022, from http://layui.sandbean.com/
 
