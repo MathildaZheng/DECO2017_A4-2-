@@ -13,7 +13,8 @@
   >The calender page is the user's monthly schedule, the user can clearly see the monthly schedule, and daily tasks and work. At the same time, you can view tasks of different urgency through the filter function.
    
    ## The picture of calender
-    ![index](./Readme_picture/calender.png)
+    ![calender](https://user-images.githubusercontent.com/100390111/172110881-423c4453-442c-4d08-be56-4273478a65fb.png)
+
    ## Iteration
    >The shortcut button to the task page has been deleted, and the user can directly click on the task bar on the left to enter the task page. The year and month are divided into two, and the user can choose and adjust individually.
    ## Function
@@ -45,6 +46,7 @@
   # List page 
   >The list page will show the task in the form of timeline according to the deadline, and will display the devide task list and progress bar of the task, which is convenient for users to view the status and management of all tasks. Also, you can choose to view different types of tasks by category.
    ## The picture of list
+   ![list](https://user-images.githubusercontent.com/100390111/172110928-0060a369-59b4-4c38-a85f-e52b8742115e.png)
    ## Iteration
    >The timeline content is changed from devide task to task to avoid duplication with calender content, and the task content is changed from link to devide task list, and the timeline is changed to according to the task's due time. Keep the progress bar and task ctegories of task
    ## Function
@@ -57,7 +59,8 @@
 
   # Study page 
   >The study page is where the user sets the time to study on the timer when studying. It will also record the user's study status. Today's task bar will list the day's tasks to help remind users of today's tasks. The clock will show the time and the background of the clock will show the rest, work and relaxation schedule of the day to help users not to forget other schedules while studying.Music player to play music while studying
-   ## The picture of list
+   ## The picture of study
+   ![study](https://user-images.githubusercontent.com/100390111/172110977-33ac3792-58b1-4420-9995-7fb0eac14ed8.png)
    ## Iteration
    >Change the timer to be able to set a specific time
    ## Function
