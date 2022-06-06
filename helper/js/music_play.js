@@ -1,4 +1,4 @@
-//Music list
+//Play list
 var music_list =[
         {
             "id":"1",
@@ -34,7 +34,7 @@ var music_list =[
     var play_list = document.querySelector("#play_list");
     var play_list_area = document.querySelector("#play_list_area");
 
-//music list
+//play list
     function loadPlayList(){
         for(var i=0;i<music_list.length;i++){
             var music = music_list[i];
@@ -78,13 +78,13 @@ var music_list =[
         }
     })
 
-//last song
+// last song
     function backword(){
         if(play_index==0){
             play_index=music_list.length-1;
         }
         else{
-            //Change the play number
+            //change the play number
             play_index--;
         }
 
@@ -92,13 +92,13 @@ var music_list =[
         playMusic();   
     }
     
-//next song
+//next
     function forward(){
         if(play_index==music_list.length-1){
             play_index=0;
         }
         else{
-            //Change the play number
+            //change the play number
             play_index++;
         }
         loadMusic();
@@ -142,7 +142,7 @@ var music_list =[
     },100)
     
 
-//Hide the playlist flag=0 means the list is hidden
+//hide the playlist flag=0 means the list is hidden
     function showMusicList(){
         if(flag){
             play_list_area.style.display="none";

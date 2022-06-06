@@ -138,7 +138,7 @@ function task_change(){
 }
 function get_list(task,type,due_date){
 
-    
+   
     if(json_div_Array[name]==null){
         // add task json
 
