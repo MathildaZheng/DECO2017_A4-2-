@@ -13,8 +13,7 @@
   >The calender page is the user's monthly schedule, the user can clearly see the monthly schedule, and daily tasks and work. At the same time, you can view tasks of different urgency through the filter function.
    
    ## The picture of calender
-    ![calender](https://user-images.githubusercontent.com/100390111/172110881-423c4453-442c-4d08-be56-4273478a65fb.png)
-
+   ![calender](https://user-images.githubusercontent.com/100390111/172111095-7e7ec40c-b6ca-4dc0-9d7b-341e56b1b278.png)
    ## Iteration
    >The shortcut button to the task page has been deleted, and the user can directly click on the task bar on the left to enter the task page. The year and month are divided into two, and the user can choose and adjust individually.
    ## Function
@@ -28,8 +27,7 @@
   > Users add tasks on this page, and distribute and reasonably arrange tasks to the calender. At the same time, set the importance of the task, the due date, and the working time of the distributed task
   
    ## The picture of task
-   ![task](https://user-images.githubusercontent.com/100390111/172110784-40f1d53c-747e-407e-9559-67bc38618eee.png)
-   
+   ![task](https://user-images.githubusercontent.com/100390111/172110784-40f1d53c-747e-407e-9559-67bc38618eee.png) 
    ## Iteration
    >The task bar and the step-by-step task bar are swapped left and right, and the position of the progress bar is re-adjusted, which is convenient for users to use more clearly.
    ## Function
