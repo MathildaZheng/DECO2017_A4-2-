@@ -27,7 +27,8 @@
   > Users add tasks on this page, and distribute and reasonably arrange tasks to the calender. At the same time, set the importance of the task, the due date, and the working time of the distributed task
   
    ## The picture of task
-   ![index](./readmeImages/home.png)
+   ![task](https://user-images.githubusercontent.com/100390111/172110784-40f1d53c-747e-407e-9559-67bc38618eee.png)
+   
    ## Iteration
    >The task bar and the step-by-step task bar are swapped left and right, and the position of the progress bar is re-adjusted, which is convenient for users to use more clearly.
    ## Function
