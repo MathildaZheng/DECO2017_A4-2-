@@ -24,7 +24,7 @@ function main() {
             endYear: 2049
         },
         mark: {},
-        markColor: ['#82C43C', '#1E75FF', '#FF9AD5', '#DDDF00', '#FF974A'],//记事各个颜色
+        markColor: ['#82C43C', '#1E75FF', '#FF9AD5', '#DDDF00', '#FF974A'],
         main: function (year, month) {
 
             var index = -1;
